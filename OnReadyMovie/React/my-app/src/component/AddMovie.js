@@ -9,7 +9,6 @@ export default class AddMovie extends Component {
       
    
        this.state = {
-      
           nombre: '' ,
           url:'',
           sinopsis : '',
@@ -19,7 +18,6 @@ export default class AddMovie extends Component {
           reparto: [],
           isSuccess: false,
           error:""
-         
        };
   
        this.cambiarNombre = this.cambiarNombre.bind(this);
@@ -75,7 +73,7 @@ export default class AddMovie extends Component {
                 <p>{this.state.successMessage}</p>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-primary" onClick={() => this.props.history.push('/',this.user)}>Go to page</button>
+                <button type="button" className="btn btn-primary" onClick={() => this.props.history.push('/')}>Volver al inicio</button>
               </div>
             </div>
           </div>
@@ -83,23 +81,12 @@ export default class AddMovie extends Component {
         );
   
     }
-      /*
-      {
-	"nombre":"Hola",
-	"url":"asdfasdf",
-	"sinopsis":"Hola",
-	"paisDeOrigen":"asdfasdf",
-	"fecha":"123123",
-	"director":"asdfasdf",
-	"reparto":""
-}
-       */
+
   
     agregarPelicula() {
         addMovie({ nombre: this.state.nombre, url: this.state.url, sinopsis: this.state.sinopsis, paisDeOrigen: this.state.paisDeOrigen,fecha:this.state.fecha,director: this.state.director})
         .then((res)=>{   
           this.setState({ isSuccess: true, successMessage: res.message })
-          console.log(res)
         }).catch((error) => {
           this.setState({ error: error.response.data.title })
         })
@@ -143,7 +130,6 @@ export default class AddMovie extends Component {
                 {this.renderInput('Director', this.state.director, 'text', this.cambiarDirector)}
                 {this.renderInput('Reparto', this.state.reparto, 'text', this.cambiarReparto)}
                
-                {console.log(this.state)}
                 <div className="col-12">
                   <button type="button" className="btn btn-primary btn-block" onClick={this.agregarPelicula}>Aceptar</button>
                 </div>

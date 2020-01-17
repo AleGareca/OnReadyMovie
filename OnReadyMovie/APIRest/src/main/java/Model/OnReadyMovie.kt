@@ -20,13 +20,11 @@ class OnReadyMovie(){
                 "The movie ${p.nombre}  is not register"
             }
 
-    fun buscarPeliculaPorNombre(nombre:String):Pelicula{
-        return peliculas.first { it.nombre == nombre }
+    fun buscarPeliculaPorId(id:String):Pelicula{
+        return peliculas.first { it.nombre == id }
     }
 
-    fun editarNombreDePelicula(p: Pelicula, n: String) {
 
-    }
 
 
 }

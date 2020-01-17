@@ -7,5 +7,6 @@ const request = (type, path, body) => axios
   .then(req => req.data)
 
 
-export const remove = body => request('delete', '/movie', body);
+export const allMovies = body => request('get', '/movies', body);
+export const remove = body => request('delete', '/movies', body);
 export const addMovie = body => request('post', '/movies/addMovie', body);

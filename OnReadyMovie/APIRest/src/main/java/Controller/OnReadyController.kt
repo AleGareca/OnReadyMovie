@@ -11,14 +11,13 @@ import java.lang.IllegalArgumentException
 
 class OnReadyController(val onReadyMovie: OnReadyMovie) {
 
-    fun peliculas()= onReadyMovie.peliculas
 
     fun agregarPeliculas(p:Pelicula)= onReadyMovie.agregarPeliculas(p)
 
-    fun borrarPelicula(nombre:String)= onReadyMovie.removerPelicula(onReadyMovie.buscarPeliculaPorNombre(nombre))
+    fun borrarPelicula(id:String)= onReadyMovie.removerPelicula(onReadyMovie.buscarPeliculaPorId(id))
 
-    fun buscarPeliculaPorNombre(nombre:String) = onReadyMovie.buscarPeliculaPorNombre(nombre)
-    fun editarNombreDePelicula(p:Pelicula,n: String)= onReadyMovie.editarNombreDePelicula(p,n)
+    fun buscarPeliculaPorId(id:String) = onReadyMovie.buscarPeliculaPorId(id)
+
 
     fun movies(ctx: Context) {
         ctx.status(200)
@@ -52,7 +51,7 @@ class OnReadyController(val onReadyMovie: OnReadyMovie) {
             val movie = Pelicula(newMovie.nombre, newMovie.url,
                     newMovie.sinopsis,newMovie.paisDeOrigen, newMovie.fecha,newMovie.director)
 
-            onReadyMovie.agregarPeliculas(movie)
+            agregarPeliculas(movie)
 
             ctx.status(201)
             ctx.json(Handler(201,"Ok","The movie ${movie.nombre} was created"))
@@ -62,6 +61,35 @@ class OnReadyController(val onReadyMovie: OnReadyMovie) {
             ctx.status(400)
             ctx.json(Handler(400,"Bad_Request","Movie is already created"))
         }
+    }
+
+
+    fun editMovie(ctx:Context){
+        val id= ctx.pathParam("id")
+        val authentication = Validator(ctx)
+        val newMovie =authentication.validationMovie()
+        try{
+            val pelicula= buscarPeliculaPorId(id)
+
+
+            pelicula.director== newMovie.director
+            pelicula.nombre== newMovie.nombre
+            pelicula.fecha== newMovie.fecha
+            pelicula.paisDeOrigen== newMovie.paisDeOrigen
+            pelicula.sinopsis== newMovie.sinopsis
+
+
+            ctx.status(201)
+            ctx.json(Handler(201, "Ok", " la pelicula ${pelicula.nombre} fue modificado "))
+
+        }
+        catch(exception: NoSuchElementException ){
+
+            ctx.status(400)
+            ctx.json(Handler(400, "Bad Request", "No se puede modificar la pelicula"))
+
+        }
+
     }
 
 

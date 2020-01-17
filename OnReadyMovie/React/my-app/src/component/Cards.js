@@ -9,6 +9,7 @@ export default class Cards extends Component {
     renderCards() {
         return (<div className="card-deck mt-4 imagen-card">
             {this.props.peliculas.map(pelicula => <Card data={pelicula}/>)}
+            {console.log(this.props.peliculas)}
         </div>
         )
     }

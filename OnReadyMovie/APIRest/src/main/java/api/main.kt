@@ -31,13 +31,15 @@ class ApiWallet(private val  port:Int){
             path("/movies") {
                get(onReadyMovieController::movies)
             }
-            path("/movies/:nombre") {
-                delete(onReadyMovieController::removeMovie)
-            }
             path("/movies/addMovie") {
                 post(onReadyMovieController::addMovie)
             }
-
+            path("/movies/:id"){
+                put(onReadyMovieController::editMovie)
+            }
+            path("/movies/:id") {
+                delete(onReadyMovieController::removeMovie)
+            }
 
         }
         return app

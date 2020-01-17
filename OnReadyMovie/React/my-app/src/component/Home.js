@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 
+
 export default class Home extends Component {
 
     constructor(props) {
@@ -21,6 +22,9 @@ export default class Home extends Component {
                 this.setState({peliculas:res.data}); 
                 console.log(res.data)
                 }))
+   
+
+
        }
 
 
@@ -30,7 +34,6 @@ export default class Home extends Component {
             <div>
                 <NavBar/>
                 <Cards peliculas={this.state.peliculas}/>
-               
             </div>
         )
     }
