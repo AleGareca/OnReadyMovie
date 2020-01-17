@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="OnReadyMovie" />
-        <module name="Peliculas" />
+        <module name="APIRest" />
       </profile>
     </annotationProcessing>
   </component>
