@@ -1,5 +1,7 @@
 package api
 
+import Controller.OnReadyController
+import Data.OnReadyMoviData
 import io.javalin.Javalin
 import io.javalin.core.util.RouteOverviewPlugin
 import io.javalin.apibuilder.ApiBuilder.*
@@ -22,26 +24,15 @@ class ApiWallet(private val  port:Int){
             ctx.json("Error fatal")
         }
                 .start(port)
-        val onReadyMovieController=onReadyMoviController(onReadyMoviData.build())
+        val onReadyMovieController= OnReadyController(OnReadyMoviData.build())
 
 
         app.routes {
             path("movies") {
-               get(onReadyMovieController::muvies)
+               get(onReadyMovieController::movies)
             }
             path("delete") {
                 post(onReadyMovieController::removeMovie)
-            }
-            path("createUser") {
-                post(onReadyMovieController::addUser)
-            }
-
-            path("/users") {
-                get(onReadyMovieController::getUsers)
-            }
-
-            path("/movies/name/:name") {
-                get(onReadyMovieController::getUserByName)
             }
 
         }

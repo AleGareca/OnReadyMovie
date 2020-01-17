@@ -8,6 +8,17 @@
     <artifactId>OnReadyMovie</artifactId>
     <version>1.0.1</version>
 
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>bintray</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
+
+
+
+
     <properties>
         <kotlin.version>1.3.61</kotlin.version>
     </properties>
