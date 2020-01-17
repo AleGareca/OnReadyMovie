@@ -15,7 +15,7 @@ export default class AddMovie extends Component {
           paisDeOrigen: '',
           fecha:'',
           director: '',
-          reparto: [],
+    
           isSuccess: false,
           error:""
        };
@@ -26,7 +26,7 @@ export default class AddMovie extends Component {
        this.cambiarPaisDeOrigen= this.cambiarPaisDeOrigen.bind(this);
        this.cambiarFecha = this.cambiarFecha.bind(this);
        this.cambiarDirector = this.cambiarDirector.bind(this);
-       this.cambiarReparto = this.cambiarReparto.bind(this);
+
        this.agregarPelicula = this.agregarPelicula.bind(this);
 
      }
@@ -54,9 +54,7 @@ export default class AddMovie extends Component {
       this.setState({ director: event.target.value });
     }
   
-    cambiarReparto(event) {
-      this.setState({ reparto: event.target.value });
-    }
+  
   
     renderSuccessModal() { 
       return (
@@ -128,7 +126,7 @@ export default class AddMovie extends Component {
                 {this.renderInput('Pais', this.state.paisDeOrigen, 'text', this.cambiarPaisDeOrigen)}
                 {this.renderInput('Fecha', this.state.fecha, 'text', this.cambiarFecha)}
                 {this.renderInput('Director', this.state.director, 'text', this.cambiarDirector)}
-                {this.renderInput('Reparto', this.state.reparto, 'text', this.cambiarReparto)}
+               
                
                 <div className="col-12">
                   <button type="button" className="btn btn-primary btn-block" onClick={this.agregarPelicula}>Aceptar</button>
