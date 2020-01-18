@@ -1,0 +1,10 @@
+.imagen-card .card{
+margin-top: 80%;   
+height: 100%;   
+}
+
+
+.imagen-card .card img{
+    height: 200px;
+    object-fit: cover;
+}
