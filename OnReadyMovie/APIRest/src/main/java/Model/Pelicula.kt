@@ -1,6 +1,6 @@
 package Model
 
-class Pelicula(var nombre:String, var paisDeOrigen: String,
-               var fecha:String, var director:String, var reparto:MutableIterable<Actor> )
+class Pelicula(val nombre:String,val url:String, val sinopsis:String,val paisDeOrigen: String,
+               val fecha:String, val director:String, val reparto:MutableIterable<Actor> )
 
-class Actor(var nombre:String, var apellido:String)
+class Actor(val nombre:String, val apellido:String)

@@ -9,7 +9,7 @@ import io.javalin.apibuilder.ApiBuilder.*
 
 fun main(args: Array<String>) {
 
-    ApiWallet(7000).init()
+    ApiWallet(7001).init()
 }
 class ApiWallet(private val  port:Int){
 
@@ -28,7 +28,7 @@ class ApiWallet(private val  port:Int){
 
 
         app.routes {
-            path("movies") {
+            path("/movies") {
                get(onReadyMovieController::movies)
             }
             path("delete") {
