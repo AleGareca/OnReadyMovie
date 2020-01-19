@@ -3,6 +3,7 @@ package Controller
 import Handler.Handler
 import Model.OnReadyMovie
 import Model.Pelicula
+import Validator.Validator
 import io.javalin.http.Context
 import io.javalin.http.NotFoundResponse
 import java.lang.IllegalArgumentException
@@ -43,6 +44,28 @@ class OnReadyController(val onReadyMovie: OnReadyMovie) {
         }
 
     }
+
+    fun addMovie(ctx: Context) {
+        val authentication = Validator(ctx)
+        val newMovie =authentication.validationMovie()
+        try {
+            val movie = Pelicula(newMovie.nombre, newMovie.url,
+                    newMovie.sinopsis,newMovie.paisDeOrigen, newMovie.fecha,newMovie.director)
+
+            onReadyMovie.agregarPeliculas(movie)
+
+            ctx.status(201)
+            ctx.json(Handler(201,"Ok","The movie ${movie.nombre} was created"))
+
+
+        } catch (e: IllegalArgumentException) {
+            ctx.status(400)
+            ctx.json(Handler(400,"Bad_Request","Movie is already created"))
+        }
+    }
+
+
+
     }
 
 

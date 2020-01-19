@@ -1,8 +1,21 @@
 import React, { Component } from 'react'
 import '../css/Imagen-card.css'
+import {remove} from '../api/api';
 
 
 export default class Card extends Component {
+    constructor(props) {
+        super(props);
+    this.deleteMovie= this.deleteMovie.bind(this)
+    }
+
+
+    deleteMovie(){
+       remove("http://localhost:7000/movies/",{nombre:this.props.data.nombre})
+    }
+
+
+
     render() {
         return (
             <div>
@@ -17,7 +30,8 @@ export default class Card extends Component {
                                     <h5 className="card-title">{this.props.data.nombre}</h5>
                                     <p className="card-text">{this.props.data.sinopsis}</p>
                                     <div className= "card-footer text-muted">
-                                    <a href=".." className="btn btn-primary">Go somewhere</a>
+                                    <button className="btn btn-primary">Borrar</button>
+                                    <button className="btn btn-primary ml-5" >+ Info</button>
                                     </div>
                                 </div>
                             

@@ -12,7 +12,7 @@ export default class NavBar extends Component {
                     <img src={logo}
                     width="30" height="30" alt=""/>OnReadyMovies
                 </a>
-                <Link className="nav-link" to={{ pathname:"/AddMovie"}}>Agregar Pelicula</Link>        
+                <Link className="nav-link" to={{ pathname:"/"}}>Home</Link>        
           </nav>
           </div>
                 )

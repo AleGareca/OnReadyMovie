@@ -16,10 +16,10 @@ export default class Home extends Component {
 
     }
     componentDidMount(){
-        axios.get("http://localhost:7001/movies")	   
+        axios.get("http://localhost:7002/movies")	   
         .then((res=>{  
                 this.setState({peliculas:res.data}); 
-            console.log(res)
+                console.log(res.data)
                 }))
        }
 
